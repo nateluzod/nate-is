@@ -1,0 +1,11 @@
+<div class="log-latest">
+    <h2 class="log-latest__title">Latest</h2>
+    {% for entry in craft.entries.section('log').limit(5).find() %}
+    <article class="log-latest__entry wysiwyg">
+        <h4 class="log-latest__entry-title">
+            <a href="{{ entry.url }}">{{ entry.title }}</a>
+        </h4>
+        <p>{{ entry.body | striptags | slice(0, 500) }}</p>
+    </article>
+    {% endfor %}
+</div>

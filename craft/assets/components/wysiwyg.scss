@@ -1,0 +1,61 @@
+.wysiwyg {
+
+  // Headers
+  @for $i from 1 through 6 {
+    h#{$i} {
+      font-size: modular-scale(($i - 6) * -1);
+      line-height: modular-scale(1);
+      margin-bottom: 10px;
+
+      a {
+        border-bottom: 1px solid $secondary;
+        color: $text;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .mega {
+    @include transition(all, .35s);
+    font-size: modular-scale(4);
+    line-height: modular-scale(1);
+    margin-top: 60px;
+
+    @include grid-media($large) {
+      font-size: modular-scale(7);
+      line-height: modular-scale(-1);
+      margin: 110px 0 30px;
+    }
+
+    // &::after {
+    //   @include size(80px 1px);
+    //   margin: 40px 0;
+    //   background: $border;
+    //   content: '';
+    //   display: block;
+    // }
+  }
+
+
+  p, ul {
+    color: $text;
+    font-size: modular-scale(1);
+    font-weight: fw(light);
+    line-height: modular-scale(2);
+    margin: 0 0 20px;
+
+    &.lede {
+      font-size: modular-scale(2);
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    a {
+      border-bottom: 1px solid $secondary;
+      color: $text;
+      text-decoration: none;
+    }
+  }
+}

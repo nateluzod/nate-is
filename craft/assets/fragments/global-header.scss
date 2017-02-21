@@ -1,0 +1,55 @@
+.global-header {
+  float: left;
+  padding: 20px;
+  width: 100%;
+
+  @include grid-media($large) {
+    @include position(fixed, 0 auto auto 0);
+    padding: 30px;
+    width: auto;
+  }
+
+  // Portrait
+  &__portrait {
+    @include filter(grayscale(100%));
+    height: auto;
+    width: 100%;
+
+    &-wrap {
+      @include transition(all, .35s);
+      @include size(70px);
+      border-radius: 50%;
+      display: block;
+      margin: 0 0 20px;
+      overflow: hidden;
+
+      @include grid-media($large) {
+        @include size(100px);
+        float: none;
+      }
+    }
+  }
+
+  // Logo words / name
+  &__logo {
+    @include transition(all .35s);
+    color: $text;
+    display: block;
+    font-family: ff(serif);
+    font-size: modular-scale(2);
+    font-weight: fw(bold);
+    line-height: modular-scale(-1);
+    text-decoration: none;
+    width: 100%;
+
+    @include grid-media($large) {
+      font-size: modular-scale(4);
+    }
+
+    &-line {
+      @include grid-media($large) {
+        display: block;
+      }
+    }
+  }
+}

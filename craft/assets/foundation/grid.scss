@@ -1,0 +1,33 @@
+// Breakpoints
+$neat-grid: (
+  columns: 12,
+  gutter: 20px,
+);
+
+$medium: (
+  media: 767px
+);
+
+$large: (
+  media: 992px
+);
+
+// General container
+@mixin container {
+  @include clearfix;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 0 20px;
+
+  &.-full {
+    max-width: 1000px;
+  }
+
+  &.-max {
+    max-width: none;
+  }
+}
+
+.container {
+  @include container;
+}

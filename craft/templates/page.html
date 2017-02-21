@@ -1,0 +1,11 @@
+{#
+ # About template
+ # --------------
+ #}
+
+{% extends "_base" %}
+
+{% block content %}
+	<h1 class="mega">{{ entry.title }}</h1>
+	{{ entry.body }}
+{% endblock %}

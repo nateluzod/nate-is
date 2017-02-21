@@ -1,0 +1,10 @@
+.base {
+  font-family: ff(serif);
+  line-height: 1.66;
+  background: #fffff8;
+
+  &__content {
+    @include container;
+    padding: 20px;
+  }
+}
