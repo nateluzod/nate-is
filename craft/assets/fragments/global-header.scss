@@ -1,31 +1,40 @@
 .global-header {
+  @include box-sizing(border-box);
+  background: $text;
   float: left;
   padding: 20px;
   width: 100%;
 
+
   @include grid-media($large) {
-    @include position(fixed, 0 auto auto 0);
-    padding: 30px;
+    @include position(fixed, 0 auto 0 0);
+    padding: 45px 30px;
     width: auto;
   }
 
   // Portrait
   &__portrait {
+    @include transition(filter, .35s);
     @include filter(grayscale(100%));
+    border-radius: 50%;
     height: auto;
     width: 100%;
+
+    &:hover {
+      @include filter(grayscale(0%));
+    }
 
     &-wrap {
       @include transition(all, .35s);
       @include size(70px);
       border-radius: 50%;
-      display: block;
+      display: none;
       margin: 0 0 20px;
       overflow: hidden;
 
       @include grid-media($large) {
-        @include size(100px);
-        float: none;
+        @include size(80px);
+        display: block;
       }
     }
   }
@@ -33,7 +42,7 @@
   // Logo words / name
   &__logo {
     @include transition(all .35s);
-    color: $text;
+    color: $background;
     display: block;
     font-family: ff(serif);
     font-size: modular-scale(2);

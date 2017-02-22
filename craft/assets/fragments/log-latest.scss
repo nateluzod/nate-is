@@ -1,0 +1,10 @@
+.log-latest {
+  &__entry {
+    border-bottom: 1px solid $border;
+    padding: 40px 0 0;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+}

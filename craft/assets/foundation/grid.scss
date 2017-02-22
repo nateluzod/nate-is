@@ -16,7 +16,7 @@ $large: (
 @mixin container {
   @include clearfix;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 580px;
   padding: 0 20px;
 
   &.-full {

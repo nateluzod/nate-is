@@ -2,10 +2,22 @@
     <h2 class="log-latest__title">Latest</h2>
     {% for entry in craft.entries.section('log').limit(5).find() %}
     <article class="log-latest__entry wysiwyg">
-        <h4 class="log-latest__entry-title">
+        <time class="-micro" datetime="{{ entry.postDate.format('Y-m-d') }}">
+            {{ entry.postDate.format('F d, Y') }}
+        </time>
+        <h3 class="log-latest__entry-title">
             <a href="{{ entry.url }}">{{ entry.title }}</a>
-        </h4>
-        <p>{{ entry.body | striptags | slice(0, 500) }}</p>
+        </h3>
+        <p>{{ entry.body | excerpt(140, '...') }} </p>
+        <ul class="categories">
+            {% for category in entry.categories %}
+                <li class="categories__category">
+                    <a href="{{ category.url }}" class="categories__category-link -micro">
+                        {{ category.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
     </article>
     {% endfor %}
 </div>

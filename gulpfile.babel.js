@@ -1,7 +1,6 @@
 'use strict';
 
 import moduleImporter from 'sass-module-importer';
-import evilIcons from 'gulp-evil-icons';
 import browserSync from 'browser-sync';
 import sassGlob from 'gulp-sass-glob';
 import watch from 'gulp-watch';
@@ -27,13 +26,6 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('./public/assets/'));
 });
 
-// Icons
-gulp.task('icons', () => {
-  return gulp.src('./craft/templates/_base.html')
-    .pipe(evilIcons())
-    .pipe(gulp.dest('./craft/templates/'));
-});
-
 // 0_0
 gulp.task('watch', () => {
   browserSync.init({
@@ -48,4 +40,4 @@ gulp.task('watch', () => {
 });
 
 // ¯\_(ツ)_/¯
-gulp.task('default', ['sass', 'icons', 'watch']);
+gulp.task('default', ['sass', 'watch']);

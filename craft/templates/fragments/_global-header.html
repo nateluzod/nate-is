@@ -1,9 +1,9 @@
 <header class="global-header" id="header">
     {% set image = profile.portrait.first() %}
     {% if image %}
-        <div class="global-header__portrait-wrap">
+        <a href="{{ siteUrl }}" class="global-header__portrait-wrap">
             <img class="global-header__portrait" src="{{ image.url }}">
-        </div>
+        </a>
     {% endif %}
     <a class="global-header__logo" href="{{ siteUrl }}">
         <span class="global-header__logo-line -first">Nate</span>

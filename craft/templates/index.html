@@ -6,6 +6,9 @@
 {% extends "_base" %}
 
 {% block content %}
-	{{ entry.body }}
-	{% include 'fragments/_log-latest' %}
+    <div class="base__content wysiwyg">
+        <h1 class="mega">{{ entry.title }}</h1>
+        {{ entry.body }}
+        {% include 'fragments/_log-latest' %}
+    </div>
 {% endblock %}

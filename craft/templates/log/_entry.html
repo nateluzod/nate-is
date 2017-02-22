@@ -1,0 +1,25 @@
+{#
+ # Log template
+ # -------------------
+ #}
+
+{% extends "_base" %}
+
+{% block content %}
+	<article class="base__content wysiwyg">
+        <h1 class="basic">{{ entry.title }}</h1>
+		<time datetime="{{ entry.postDate.format('Y-m-d') }}">
+            {{ entry.postDate.format('F d, Y') }}
+        </time>
+		{{ entry.body }}
+        <ul class="categories">
+            {% for category in entry.categories %}
+                <li class="categories__category">
+                    <a href="{{ category.url }}" class="categories__category-link">
+                        {{ category.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+	</article>
+{% endblock %}

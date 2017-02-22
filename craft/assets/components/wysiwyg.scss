@@ -5,7 +5,8 @@
     h#{$i} {
       font-size: modular-scale(($i - 6) * -1);
       line-height: modular-scale(1);
-      margin-bottom: 10px;
+      margin: 0 0 20px;
+      color: $text;
 
       a {
         border-bottom: 1px solid $secondary;
@@ -22,25 +23,24 @@
     margin-top: 60px;
 
     @include grid-media($large) {
-      font-size: modular-scale(7);
+      font-size: modular-scale(8);
       line-height: modular-scale(-1);
-      margin: 110px 0 30px;
+      margin: 90px 0 60px;
     }
-
-    // &::after {
-    //   @include size(80px 1px);
-    //   margin: 40px 0;
-    //   background: $border;
-    //   content: '';
-    //   display: block;
-    // }
   }
 
+  .basic {
+    margin-top: 130px;
+    font-size: modular-scale(6);
+    line-height: modular-scale(0);
+  }
 
-  p, ul {
+  p,
+  ul {
     color: $text;
     font-size: modular-scale(1);
     font-weight: fw(light);
+    letter-spacing: rem(.2);
     line-height: modular-scale(2);
     margin: 0 0 20px;
 
@@ -55,7 +55,36 @@
     a {
       border-bottom: 1px solid $secondary;
       color: $text;
+      position: relative;
       text-decoration: none;
+      z-index: 1;
+    }
+  }
+
+  .dropcap {
+    color: $text;
+    float: left;
+    font-family: ff(serif);
+    font-size: 130px;
+    font-weight: fw(bold);
+    line-height: 60px;
+    padding: 22px 15px 20px 0;
+  }
+
+  .button {
+    font-weight: fw(bold);
+  }
+
+  time {
+    color: $light-text;
+    display: block;
+    font-size: modular-scale(1);
+    font-weight: fw(light);
+    margin: 0 0 40px;
+
+    &.-micro {
+      font-size: modular-scale(0);
+      margin: 0 0 5px;
     }
   }
 }

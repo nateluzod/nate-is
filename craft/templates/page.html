@@ -6,6 +6,8 @@
 {% extends "_base" %}
 
 {% block content %}
-	<h1 class="mega">{{ entry.title }}</h1>
-	{{ entry.body }}
+    <div class="base__content wysiwyg">
+        <h1 class="mega">{{ entry.title }}</h1>
+        {{ entry.body }}
+    </div>
 {% endblock %}
