@@ -7,7 +7,7 @@ try {
     $dotenv->load();
     $dotenv->required(['JAWSDB_URL']);
 } catch (Exception $e) {
-    exit('Could not find a .env file.');
+    // exit('Could not find a .env file.');
 }
 
 // Path to your craft/ folder
