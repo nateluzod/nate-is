@@ -2,6 +2,7 @@
   "require": {
      "ext-mbstring": "*",
      "ext-imagick": "*",
+     "ext-mcrypt": "*",
      "vlucas/phpdotenv": "^2.0"
   }
 }
