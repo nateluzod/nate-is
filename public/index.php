@@ -2,8 +2,19 @@
 
 require_once('../vendor/autoload.php');
 
+// $dotenv = new Dotenv\Dotenv(__DIR__, 'myconfig');
+// $dotenv->load();
+
 $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
-$dotenv->load();
+$dotenv->loadIfExists();
+
+// try {
+//     $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
+//     $dotenv->load();
+//     $dotenv->required(['JAWSDB_URL']);
+// } catch (Exception $e) {
+//     exit('Could not find a .env file.');
+// }
 
 // Path to your craft/ folder
 $craftPath = '../craft';
