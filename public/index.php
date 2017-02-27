@@ -2,11 +2,10 @@
 
 require_once('../vendor/autoload.php');
 
-try {
-    $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
-    $dotenv->load();
-} catch (Exception $e) {
-    unset($e);
+// Only attempt if file exists
+if (file_exists('../.env')) {
+	$dotenv = new Dotenv\Dotenv(dirname(__DIR__));
+	$dotenv->load();
 }
 
 // Path to your craft/ folder

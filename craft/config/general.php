@@ -10,7 +10,7 @@
 return array(
 
     // Base site URL
-    'siteUrl' => null,
+    'siteUrl' => getenv('SITE_URL'),
 
     // Environment-specific variables (see https://craftcms.com/docs/multi-environment-configs#environment-specific-variables)
     'environmentVariables' => array(),
@@ -22,12 +22,12 @@ return array(
     'enableCsrfProtection' => true,
 
     // Whether "index.php" should be visible in URLs (true, false, "auto")
-    'omitScriptNameInUrls' => 'auto',
+    'omitScriptNameInUrls' => false,
 
     // Control Panel trigger word
-    'cpTrigger' => 'admin',
+    'cpTrigger' => getenv('CP_TRIGGER'),
 
 	// Dev Mode (see https://craftcms.com/support/dev-mode)
-	'devMode' => false,
+	'devMode' => getenv('DEV_MODE'),
 
 );
