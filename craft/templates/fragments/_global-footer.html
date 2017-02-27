@@ -4,6 +4,9 @@
             <a class="global-footer__social-link" href="{{ profile.githubUrl }}">Github</a>
             <a class="global-footer__social-link" href="{{ profile.linkedinUrl }}">LinkedIn</a>
             <a class="global-footer__social-link" href="{{ profile.twitterUrl }}">Twitter</a>
+            {% if entry.isEditable() %}
+                <a class="global-footer__social-link" href="{{ entry.cpEditUrl }}">Edit entry</a>
+            {% endif %}
         </div>
         <span class="global-footer__copyright">
             &copy; {{ now.year }} - Nate Luzod.

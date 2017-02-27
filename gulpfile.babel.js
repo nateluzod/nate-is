@@ -3,13 +3,18 @@
 import moduleImporter from 'sass-module-importer';
 import browserSync from 'browser-sync';
 import sassGlob from 'gulp-sass-glob';
+import uglify from 'gulp-uglifyjs';
+import concat from 'gulp-concat';
 import watch from 'gulp-watch';
 import sass from 'gulp-sass';
 import gulp from 'gulp';
 
 const PATHS = {
   sass: './craft/assets/**/*.scss',
-  twig: './craft/templates/**/*.html'
+  twig: './craft/templates/**/*.html',
+  js:   [
+    './node_modules/prismjs/prism.js'
+  ]
 };
 
 // SASS
@@ -26,6 +31,14 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('./public/assets/'));
 });
 
+// JS
+gulp.task('js', function() {
+  return gulp.src(PATHS.js)
+    .pipe(concat('main.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./public/assets/'));
+});
+
 // 0_0
 gulp.task('watch', () => {
   browserSync.init({
@@ -38,6 +51,7 @@ gulp.task('watch', () => {
       browserSync.reload()
   });
 });
+
 
 // ¯\_(ツ)_/¯
 gulp.task('default', ['sass', 'watch']);

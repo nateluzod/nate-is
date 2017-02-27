@@ -22,14 +22,20 @@
     "bourbon": "^4.3.2",
     "bourbon-neat": "^2.0.0",
     "browser-sync": "^2.18.8",
+    "browserify": "^14.1.0",
     "bulma": "^0.3.1",
     "colors.css": "^3.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-evil-icons": "^0.3.0",
+    "gulp-minify": "0.0.15",
     "gulp-sass": "^3.1.0",
     "gulp-sass-glob": "^1.0.8",
     "gulp-uglify": "^2.0.1",
+    "gulp-uglifyjs": "^0.6.2",
     "gulp-watch": "^4.3.11",
     "normalize-scss": "^6.0.0",
-    "sass-module-importer": "^1.4.0"
+    "prismjs": "^1.6.0",
+    "sass-module-importer": "^1.4.0",
+    "uglify-js": "^2.7.5"
   }
 }

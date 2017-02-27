@@ -15,8 +15,9 @@
   @if $family == serif {
     @return 'Quarto A', 'Quarto B';
   } @else if $family == sans {
-    // @return 'Knockout 49 A', 'Knockout 49 B';
     @return 'Knockout 48 A', 'Knockout 48 B';
+  } @else if $family == mono {
+    @return 'Operator Mono SSm A', 'Operator Mono SSm B';
   }
 }
 
