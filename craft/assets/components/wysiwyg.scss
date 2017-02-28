@@ -29,7 +29,7 @@
     @include grid-media($large) {
       font-size: modular-scale(17);
       line-height: modular-scale(17);
-      margin: rem(80) 0 rem(20);
+      margin: rem(85) 0 rem(20);
     }
   }
 
@@ -50,7 +50,7 @@
     color: $text;
     font-size: modular-scale(0);
     font-weight: fw(light);
-    letter-spacing: rem(.2);
+    // letter-spacing: rem(.1);
     line-height: modular-scale(4);
     margin: 0 0 20px;
 
@@ -68,10 +68,10 @@
     color: $text;
     float: left;
     font-family: ff(serif);
-    font-size: 130px;
+    font-size: rem(120);
     font-weight: fw(bold);
-    line-height: 60px;
-    padding: 22px 15px 20px 0;
+    line-height: rem(50);
+    padding: rem(20) rem(10) rem(20) 0;
   }
 
   .button {
