@@ -2,9 +2,12 @@
   @include box-sizing(border-box);
   background: $text;
   float: left;
-  padding: rem(20);
+  padding: rem(10) rem(20);
   width: 100%;
 
+  @include grid-media($medium) {
+    padding: rem(20);
+  }
 
   @include grid-media($large) {
     @include position(fixed, 0 auto 0 0);
@@ -17,8 +20,8 @@
     @include transition(filter, .35s);
     @include filter(grayscale(100%));
     @include size(rem(78));
-    border-radius: 50%;
     border: 1px solid $text;
+    border-radius: 50%;
 
     &:hover {
       @include filter(grayscale(0%));
@@ -27,9 +30,8 @@
     &-wrap {
       @include transition(all, .35s);
       @include size(70px);
-      border-radius: 50%;
-      // border: 2px solid lighten($text, 10%);
       border: 0;
+      border-radius: 50%;
       display: none;
       margin: 0 0 20px;
       overflow: hidden;
@@ -43,23 +45,28 @@
 
   // Logo words / name
   &__logo {
-    @include transition(all .35s);
+    @include transition(color .35s);
+    border: 0;
     color: $background;
     display: block;
     font-family: ff(serif);
-    font-size: modular-scale(2);
+    font-size: modular-scale(1);
     font-weight: fw(bold);
-    line-height: modular-scale(-1);
+    line-height: modular-scale(2);
     text-decoration: none;
     width: 100%;
-    border: 0;
 
     &:hover {
-      color: darken($background, 20%);
+      color: $white;
+    }
+
+    @include grid-media($medium) {
+      font-size: modular-scale(4);
     }
 
     @include grid-media($large) {
-      font-size: modular-scale(4);
+      font-size: modular-scale(8);
+      line-height: modular-scale(6);
     }
 
     &-line {

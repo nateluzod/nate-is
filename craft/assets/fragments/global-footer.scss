@@ -1,10 +1,12 @@
 .global-footer {
   @include container;
-  font-size: modular-scale(0);
+  font-size: modular-scale(-1);
 
   &__inner {
-    border-top: 1px solid $border;
-    padding: 20px 0 100px;
+    border-top: rem(1) solid $border;
+    float: left;
+    padding: rem(20) 0 rem(100);
+    width: 100%;
   }
 
   &__copyright {
@@ -13,14 +15,21 @@
   }
 
   &__social {
-    float: right;
-    margin: 0 0 10px;
+    float: left;
+    margin: 0 0 rem(10);
+    width: 100%;
+
+    @include grid-media($large) {
+      float: right;
+      width: auto;
+    }
 
     &-link {
-      margin: 0 10px 0 0;
-      text-decoration: none;
-      color: $text;
+      @include type-smooth;
       border-bottom: 1px solid $secondary;
+      color: $text;
+      margin: 0 rem(10) 0 0;
+      text-decoration: none;
     }
   }
 }

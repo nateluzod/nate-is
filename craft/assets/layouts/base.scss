@@ -1,9 +1,8 @@
 .base {
+  background: $background;
   font-family: ff(serif);
-  line-height: 1.66;
-  background: #fffff8;
-  margin: 0;
   font-size: 100%;
+  margin: 0;
 
   &__content {
     @include container;

@@ -3,16 +3,16 @@
   // Headers
   @for $i from 1 through 6 {
     h#{$i} {
-      font-size: modular-scale(($i - 6) * -1);
-      line-height: modular-scale(1);
-      margin: 0 0 20px;
+      @include type-smooth;
       color: $text;
+      font-size: modular-scale(($i - 6) * -2);
+      line-height: modular-scale(($i - 6) * -2);
+      margin: 0 0 20px;
 
-      // a {
-      //   border-bottom: 1px solid $secondary;
-      //   color: $text;
-      //   text-decoration: none;
-      // }
+      @include grid-media($medium) {
+        font-size: modular-scale(($i - 6) * -3);
+        line-height: modular-scale(($i - 6) * -3);
+      }
     }
 
     p+h#{$i} {
@@ -22,34 +22,41 @@
 
   .mega {
     @include transition(all, .35s);
-    font-size: modular-scale(4);
-    line-height: modular-scale(1);
-    margin-top: 60px;
+    font-size: modular-scale(12);
+    line-height: modular-scale(12);
+    margin-top: rem(60);
 
     @include grid-media($large) {
-      font-size: modular-scale(8);
-      line-height: modular-scale(-1);
-      margin: 90px 0 60px;
+      font-size: modular-scale(18);
+      line-height: modular-scale(18);
+      margin: rem(67) 0 rem(20);
     }
   }
 
   .basic {
-    margin-top: 130px;
-    font-size: modular-scale(6);
-    line-height: modular-scale(0);
+    font-size: modular-scale(9);
+    line-height: modular-scale(9);
+    margin: rem(80) 0 rem(20);
+
+    @include grid-media($medium) {
+      font-size: modular-scale(13);
+      line-height: modular-scale(13);
+      margin: rem(130) 0 rem(20);
+    }
   }
 
   p,
   ul {
     color: $text;
-    font-size: modular-scale(1);
+    font-size: modular-scale(0);
     font-weight: fw(light);
     letter-spacing: rem(.2);
-    line-height: modular-scale(2);
+    line-height: modular-scale(4);
     margin: 0 0 20px;
 
-    &.lede {
-      font-size: modular-scale(2);
+    @include grid-media($medium) {
+      font-size: modular-scale(1);
+      line-height: modular-scale(5);
     }
 
     em {
@@ -79,8 +86,9 @@
     margin: 0 0 40px;
 
     &.-micro {
-      font-size: modular-scale(0);
-      margin: 0 0 5px;
+      font-size: modular-scale(-1);
+      line-height: modular-scale(1);
+      margin: 0 0 rem(10);
     }
   }
 }

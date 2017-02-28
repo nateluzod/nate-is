@@ -5,6 +5,9 @@
 // @import 'prismjs/themes/prism.css';
 @import 'normalize-scss';
 
+$modular-scale-ratio: $major-second;
+$modular-scale-base: 1.2rem;
+
 // homegrown
 @import 'foundation/*';
 @import 'components/*';

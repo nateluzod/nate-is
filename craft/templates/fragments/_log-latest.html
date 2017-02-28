@@ -5,9 +5,9 @@
         <time class="-micro" datetime="{{ entry.postDate.format('Y-m-d') }}">
             {{ entry.postDate.format('F d, Y') }}
         </time>
-        <h3 class="log-latest__entry-title">
+        <h4 class="log-latest__entry-title">
             <a href="{{ entry.url }}">{{ entry.title }}</a>
-        </h3>
+        </h4>
         <p>{{ entry.body | excerpt(140, '...') }} </p>
         <ul class="categories">
             {% for category in entry.categories %}
