@@ -6,12 +6,12 @@
       @include type-smooth;
       color: $text;
       font-size: modular-scale(($i - 6) * -2);
-      line-height: modular-scale(($i - 6) * -2);
+      line-height: modular-scale(($i - 6) * -4);
       margin: 0 0 20px;
 
       @include grid-media($medium) {
         font-size: modular-scale(($i - 6) * -3);
-        line-height: modular-scale(($i - 6) * -3);
+        line-height: modular-scale(($i - 6) * -6);
       }
     }
 
@@ -21,7 +21,6 @@
   }
 
   .mega {
-    @include transition(all, .35s);
     font-size: modular-scale(12);
     line-height: modular-scale(12);
     margin-top: rem(60);
