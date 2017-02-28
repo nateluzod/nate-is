@@ -62,8 +62,25 @@
     }
 
     img {
+      @include transition(all 0.35s);
+      @include filter(grayscale(100%));
       height: auto;
-      width: 100%;
+      width: calc(100% + 40px);
+      margin-left: -20px;
+
+      &:hover {
+        @include filter(grayscale(0%));
+      }
+
+      @include grid-media($medium) {
+        width: calc(100% + 100px);
+        margin-left: -50px;
+      }
+
+      @include grid-media($large) {
+        margin-left: -10%;
+        width: 120%;
+      }
     }
   }
 
