@@ -6,17 +6,17 @@
       @include type-smooth;
       color: $text;
       font-size: modular-scale(($i - 6) * -2);
-      line-height: modular-scale(($i - 6) * -4);
-      margin: 0 0 20px;
+      line-height: modular-scale(($i - 6) * -3);
+      margin: 0 0 rem(20);
 
       @include grid-media($medium) {
         font-size: modular-scale(($i - 6) * -3);
-        line-height: modular-scale(($i - 6) * -6);
+        line-height: modular-scale(($i - 6) * -4);
       }
     }
 
     p+h#{$i} {
-      margin-top: 80px;
+      margin-top: rem(80);
     }
   }
 
@@ -49,7 +49,6 @@
     color: $text;
     font-size: modular-scale(0);
     font-weight: fw(light);
-    // letter-spacing: rem(.1);
     line-height: modular-scale(4);
     margin: 0 0 20px;
 
