@@ -27,9 +27,9 @@
     margin-top: rem(60);
 
     @include grid-media($large) {
-      font-size: modular-scale(18);
-      line-height: modular-scale(18);
-      margin: rem(67) 0 rem(20);
+      font-size: modular-scale(17);
+      line-height: modular-scale(17);
+      margin: rem(80) 0 rem(20);
     }
   }
 
