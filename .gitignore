@@ -1,3 +1,4 @@
+craft/storage/
 .env
 node_modules/
 vendor/
