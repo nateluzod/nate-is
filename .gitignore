@@ -1,6 +1,5 @@
 craft/storage/backups/*
 craft/storage/runtime/*
-craft/storage/userphotos/*
 .env
 node_modules/
 vendor/
