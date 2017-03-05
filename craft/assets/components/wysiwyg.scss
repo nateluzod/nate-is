@@ -6,12 +6,12 @@
       @include type-smooth;
       color: $text;
       font-size: modular-scale(($i - 6) * -2);
-      line-height: modular-scale(($i - 6) * -3);
+      line-height: modular-scale(($i - 6) * -2);
       margin: 0 0 rem(20);
 
       @include grid-media($medium) {
         font-size: modular-scale(($i - 6) * -3);
-        line-height: modular-scale(($i - 6) * -4);
+        line-height: modular-scale(($i - 6) * -3);
       }
     }
 
