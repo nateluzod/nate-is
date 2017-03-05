@@ -16,7 +16,7 @@
     }
 
     p+h#{$i} {
-      margin-top: rem(80);
+      margin-top: rem(60);
     }
   }
 
@@ -82,6 +82,12 @@
         width: 120%;
       }
     }
+  }
+
+  figcaption {
+    font-size: modular-scale(-1);
+    line-height: modular-scale(0);
+    margin-bottom: rem(30);
   }
 
   .dropcap {
