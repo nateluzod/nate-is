@@ -94,10 +94,16 @@
     color: $text;
     float: left;
     font-family: ff(serif);
-    font-size: rem(120);
+    font-size: rem(100);
     font-weight: fw(bold);
     line-height: rem(50);
-    padding: rem(20) rem(10) rem(20) 0;
+    padding: rem(14) rem(10) rem(20) 0;
+
+    @include grid-media($medium) {
+      font-size: rem(120);
+      line-height: rem(50);
+      padding: rem(20) rem(10) rem(20) 0;
+    }
   }
 
   .button {
