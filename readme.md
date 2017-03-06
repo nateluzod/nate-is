@@ -1,11 +1,10 @@
-                __         _     
-   ____  ____ _/ /____    (_)____
-  / __ \/ __ `/ __/ _ \  / / ___/
- / / / / /_/ / /_/  __/ / (__  )
-/_/ /_/\__,_/\__/\___(_)_/____/  
-
 # About
 
-This site was built with Craft CMS.
+Built with Craft CMS, hosted on Heroku. Someady tested on Travis when I get around to writing some tests.
 
 # Releases
+
+:checkered_flag: v1.0.0 - initial release - 03/04/2017
+- Global elements
+- Basic page and typography styles
+- Basic log section
