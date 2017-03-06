@@ -19,10 +19,10 @@ return array(
     'defaultWeekStartDay' => 0,
 
     // Enable CSRF Protection (recommended, will be enabled by default in Craft 3)
-    'enableCsrfProtection' => true,
+    'enableCsrfProtection' => getenv('ENABLE_CSRF_PROTECTION'),
 
     // Whether "index.php" should be visible in URLs (true, false, "auto")
-    'omitScriptNameInUrls' => "auto",
+    'omitScriptNameInUrls' => getenv('OMIT_SCRIPT_NAME_IN_URLS'),
 
     // Control Panel trigger word
     'cpTrigger' => getenv('CP_TRIGGER'),

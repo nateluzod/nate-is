@@ -3,3 +3,9 @@
   / __ \/ __ `/ __/ _ \  / / ___/
  / / / / /_/ / /_/  __/ / (__  )
 /_/ /_/\__,_/\__/\___(_)_/____/  
+
+# About
+
+This site was built with Craft CMS.
+
+# Releases
