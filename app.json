@@ -1,0 +1,59 @@
+{
+  "name": "nate-is",
+  "scripts": {},
+  "env": {
+    "AUTOBUS_URL": {
+      "required": true
+    },
+    "CP_TRIGGER": {
+      "required": true
+    },
+    "DEV_MODE": {
+      "required": true
+    },
+    "ENABLE_CSRF_PROTECTION": {
+      "required": true
+    },
+    "HEROKU_APP_ID": {
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "HEROKU_RELEASE_CREATED_AT": {
+      "required": true
+    },
+    "HEROKU_RELEASE_VERSION": {
+      "required": true
+    },
+    "HEROKU_SLUG_COMMIT": {
+      "required": true
+    },
+    "HEROKU_SLUG_DESCRIPTION": {
+      "required": true
+    },
+    "JAWSDB_URL": {
+      "required": true
+    },
+    "NEW_RELIC_LICENSE_KEY": {
+      "required": true
+    },
+    "NEW_RELIC_LOG": {
+      "required": true
+    },
+    "OMIT_SCRIPT_NAME_IN_URLS": {
+      "required": true
+    }
+  },
+  "formation": {},
+  "addons": [
+    "autobus",
+    "jawsdb",
+    "newrelic"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    }
+  ]
+}
