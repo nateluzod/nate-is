@@ -4,40 +4,38 @@
  * @author Lea Verou
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
-	color: black;
-	background: none;
-	// text-shadow: 0 1px white;
-	// font-family: 'Courier New', 'Andale Mono', 'Ubuntu Mono', monospace;
-	font-family: ff(mono);
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
+$prism-background: transparent;
 
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
+pre {
+  margin-bottom: rem(40);
+  border-top: 1px dashed $border;
+  border-bottom: 1px dashed $border;
+}
 
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
+pre[class*="language-"],
+code[class*="language-"] {
+  color: $text;
+  font-family: ff(mono), 'Courier New', monospace;
+  hyphens: none;
+  line-height: 1.5;
+  tab-size: 4;
+  text-align: left;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
 }
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
 	text-shadow: none;
-	background: #b3d4fc;
+	background: $prism-background;
 }
 
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 code[class*="language-"]::selection, code[class*="language-"] ::selection {
 	text-shadow: none;
-	background: #b3d4fc;
+	background: $prism-background;
 }
 
 @media print {
@@ -50,15 +48,13 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 /* Code blocks */
 pre[class*="language-"] {
 	padding: 1em;
-	margin: .5em 0;
+	margin: rem(30) 0;
 	overflow: auto;
 }
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	// background: lighten($text, 5%);
-	background: #fffff8;
-	// border-left: 1px solid $border;
+	background: $prism-background;
 }
 
 /* Inline code */

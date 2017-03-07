@@ -7,13 +7,12 @@
  * You can see a list of the default settings in craft/app/etc/config/defaults/db.php
  */
 
- $url = getenv('JAWSDB_URL');
+$dbconn = parse_url(getenv('JAWSDB_URL'));
 
- $dbparts = parse_url($url);
- return array(
-   'server' => $dbparts['host'],
-   'user' => $dbparts['user'],
-   'password' => $dbparts['pass'],
-   'database' => ltrim($dbparts['path'],'/'),
-   'tablePrefix' => 'craft',
- );
+return array(
+    'server' => $dbconn['host'],
+    'user' => $dbconn['user'],
+    'password' => $dbconn['pass'],
+    'database' => ltrim($dbconn['path'],'/'),
+    'tablePrefix' => 'craft'
+);

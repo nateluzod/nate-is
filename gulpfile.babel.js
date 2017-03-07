@@ -13,7 +13,18 @@ const PATHS = {
   sass: './craft/assets/**/*.scss',
   twig: './craft/templates/**/*.html',
   js:   [
-    './node_modules/prismjs/prism.js'
+    './node_modules/prismjs/prism.js',
+    './node_modules/prismjs/components/prism-php.js',
+    './node_modules/prismjs/components/prism-bash.js',
+    './node_modules/prismjs/components/prism-scss.js',
+    './node_modules/prismjs/components/prism-twig.js',
+    './node_modules/prismjs/components/prism-elixir.js',
+    './node_modules/prismjs/components/prism-erlang.js',
+    './node_modules/prismjs/components/prism-css.js',
+    './node_modules/prismjs/components/prism-gherkin.js',
+    './node_modules/prismjs/components/prism-javascript.js',
+    './node_modules/prismjs/components/prism-python.js',
+    './node_modules/prismjs/components/prism-yaml.js',
   ]
 };
 
