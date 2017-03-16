@@ -22,7 +22,7 @@ return array(
     'enableCsrfProtection' => getenv('ENABLE_CSRF_PROTECTION'),
 
     // Whether "index.php" should be visible in URLs (true, false, "auto")
-    'omitScriptNameInUrls' => getenv('OMIT_SCRIPT_NAME_IN_URLS'),
+    'omitScriptNameInUrls' => "auto",
 
     // Control Panel trigger word
     'cpTrigger' => getenv('CP_TRIGGER'),
