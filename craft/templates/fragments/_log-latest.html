@@ -9,6 +9,7 @@
             <a href="{{ entry.url }}">{{ entry.title }}</a>
         </h4>
         <p>{{ entry.body | excerpt(280, '...') }} </p>
+        {#
         <ul class="categories">
             {% for category in entry.categories %}
                 <li class="categories__category">
@@ -18,6 +19,7 @@
                 </li>
             {% endfor %}
         </ul>
+        #}
     </article>
     {% endfor %}
 </div>

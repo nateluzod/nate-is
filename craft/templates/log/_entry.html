@@ -12,6 +12,7 @@
             {{ entry.postDate.format('F d, Y') }}
         </time>
 		{{ entry.body }}
+        {#
         <ul class="categories">
             {% for category in entry.categories %}
                 <li class="categories__category">
@@ -21,5 +22,6 @@
                 </li>
             {% endfor %}
         </ul>
+        #}
 	</article>
 {% endblock %}
