@@ -1,7 +1,7 @@
 ---
 title: "Trying Rust"
 date: 2017-08-28T19:35:45-10:00
-draft: true
+draft: false
 ---
 
 I hit a wall working on CMS / WordPress this afternoon so decided to take a few minutes to check out a 'new' language. Never mind that I'm months behind on learning Elixir, Phoenix and Elm, as was my plan for earlier this year - today I wanted to check out Rust. 

@@ -3,12 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nateluzod.github.io/nate-is/post/trying-rust/</loc>
+    <lastmod>2017-08-28T19:35:45-10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nateluzod.github.io/nate-is/post/behat-tests-silent-failure/</loc>
+    <lastmod>2017-05-25T19:59:40-10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nateluzod.github.io/nate-is/post/laravel-https-heroku/</loc>
+    <lastmod>2017-04-27T19:55:13-10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nateluzod.github.io/nate-is/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://nateluzod.github.io/nate-is/</loc>
+    <lastmod>2017-08-28T19:35:45-10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://nateluzod.github.io/nate-is/post/</loc>
+    <lastmod>2017-08-28T19:35:45-10:00</lastmod>
     <priority>0</priority>
   </url>
   

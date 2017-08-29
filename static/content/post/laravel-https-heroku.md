@@ -1,7 +1,7 @@
 ---
 title: "HTTPS Redirect for Laravel on Heroku"
 date: 2017-04-27T19:55:13-10:00
-draft: true
+draft: false
 ---
 
 Earlier this week I had a series of 'black-hole' days; the kind where you spend way too long on one problem, only to end the day with embarrassingly little to show for it.

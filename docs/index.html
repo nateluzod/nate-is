@@ -52,6 +52,117 @@
 <div class="posts">
 
       
+  <div class="post">
+    <h1 class="post-title">
+      <a href="https://nateluzod.github.io/nate-is/post/trying-rust/">
+        Trying Rust
+      </a>
+    </h1>
+
+    <span class="post-date">Mon, Aug 28, 2017</span>
+
+    <p>I hit a wall working on CMS / WordPress this afternoon so decided to take a few minutes to check out a &lsquo;new&rsquo; language. Never mind that I&rsquo;m months behind on learning Elixir, Phoenix and Elm, as was my plan for earlier this year - today I wanted to check out Rust.</p>
+
+<p>Why? I&rsquo;m not terribly interested in building anything non-web, so Rust falls decidedly out of my sweet spot in terms of practicality. There are a handful of frameworks but nothing close to resembling an easy path if you&rsquo;d want to comfortably move forward with client work.</p>
+
+<p>If nothing else, I just wanted to expose myself to something different.</p>
+
+<p>I didn&rsquo;t study computer science, have no background in C or C++ and my only C-based language knowledge comes from years of PHP development. With that said, the syntax seemed familiar enough. A few things I noticed off the bat:</p>
+
+<ul>
+<li>Cargo is nice. There&rsquo;s nothing to hate about JSON but Cargo.toml is so much easier on the eyes than package or composer.json, and <code>cargo</code> runs fast.</li>
+<li>Variables are immutable by default, you have to explicitly add mut for mutability. I&rsquo;m sure this exists elsewhere but it&rsquo;s the first time I&rsquo;ve personally seen it.</li>
+<li>Values are statically typed, but the compiler will attempt to infer based on use.</li>
+<li>Control flow / loops have interesting things like a <code>.rev()</code> method. Again, I&rsquo;m sure it exists elsewhere but it&rsquo;s a first for me.</li>
+<li>Rust devs are referred to as &lsquo;rustaceans&rsquo;
+I like that the docs immediately dive into building something you can interact with. I created a guessing game command line app pretty quickly, and it worked.</li>
+</ul>
+
+<p>Rust looks cool and I have to assume that the high praise lavished on the language by so many talented devs is well-deserved. For me and my needs, though, I probably won&rsquo;t spend any more time looking into it anytime soon. Low level memory management is too far outside my immediate concerns.</p>
+
+<p>I fell in love with Elixir immediately, and Phoenix and its ecosystem makes it a more pragmatic focus for the foreseeable future.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="https://nateluzod.github.io/nate-is/post/behat-tests-silent-failure/">
+        Behat Tests Silently Failing
+      </a>
+    </h1>
+
+    <span class="post-date">Thu, May 25, 2017</span>
+
+    <p>This week I ran into an issue where our Behat test suite would run and exit without completing, no error messages or meaningful warnings. Best of all was that this happened locally but not on Travis CI.</p>
+
+<p>After sifting through some ancient SO threads and upgrading to PHP 7.2, the issue seemed to be local memory limit. The quick fix was just updating php.ini:</p>
+
+<pre><code>memory_limit = 512M;
+</code></pre>
+
+<p>Our suite only has 100 or so scenarios, only seeds once and runs quickly: 30 seconds locally and 3 minutes on Travis CI. That doesn&rsquo;t seem outlandish for an app, so I would think this is a more common problem as I have read about other suites taking 10-20 minutes to complete.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="https://nateluzod.github.io/nate-is/post/laravel-https-heroku/">
+        HTTPS Redirect for Laravel on Heroku
+      </a>
+    </h1>
+
+    <span class="post-date">Thu, Apr 27, 2017</span>
+
+    <p>Earlier this week I had a series of &lsquo;black-hole&rsquo; days; the kind where you spend way too long on one problem, only to end the day with embarrassingly little to show for it.</p>
+
+<p>One of the reasons I started writing is to document fixes for those odd issues and hopefully prevent others from having to deal with the same things. Tuesday&rsquo;s issue was forwarding all non http requests to https on a Laravel app.</p>
+
+<p>Seems simple enough, right? Sadly, no.</p>
+
+<p>First off, I tried a few simple .htaccess variations, all of which returned &lsquo;Too many redirects&rsquo;. No problem, there were other options. Next, I tried a few different middleware approaches. Worked fine locally, virtually ineffective on the server. After that, I tried using \URL::forceSchema(&lsquo;https&rsquo;); in AppServiceProvider.php - also totally ineffective. By this point I had burned a couple hours. Submitted a ticket to Heroku support and kept looking. I can&rsquo;t remember how or which SO thread(s) this was pieced together from, but this did the trick:</p>
+
+<pre><code>&lt;IfModule mod_negotiation.c&gt;
+    Options -MultiViews
+&lt;/IfModule&gt;
+
+    DirectoryIndex index.php index.html index.htm
+
+    RewriteEngine On
+
+    #Normal way (in case you need to deploy to NON-heroku)
+    RewriteCond %{HTTPS} !=on
+
+    #Heroku way
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+
+    #If neither above conditions are met, redirect to https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+&lt;/IfModule&gt;
+</code></pre>
+
+<p>The response I got from Heroku the next day more or less explains why middleware didn&rsquo;t do anything:</p>
+
+<p>&ldquo;Heroku dynos run behind a routing layer that handles load balancing and HTTPS termination (<a href="https://devcenter.heroku.com/articles/http-routing#routing">https://devcenter.heroku.com/articles/http-routing#routing</a>), so the request to the backend is plain HTTP, and the original protocol of the request is in the X-Forwarded-Proto header, as documented here: <a href="https://devcenter.heroku.com/articles/http-routing#heroku-headers">https://devcenter.heroku.com/articles/http-routing#heroku-headers</a></p>
+
+<p>You need to rewrite based on that header, or, if you want to handle things purely in Laravel, instruct the framework to trust the right headers, as documented here: <a href="https://devcenter.heroku.com/articles/getting-started-with-laravel#trusting-the-load-balancer&quot;">https://devcenter.heroku.com/articles/getting-started-with-laravel#trusting-the-load-balancer&quot;</a></p>
+
+<p>So that&rsquo;s that. Hopefully, if you&rsquo;re suffering the same issue, Google will be kind and lead you here.</p>
+
+  </div>
+  
 </div>
 </div>
 

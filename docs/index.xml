@@ -6,9 +6,41 @@
     <description>Recent content on Nate Luzod</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 28 Aug 2017 19:35:45 -1000</lastBuildDate>
     
 	<atom:link href="https://nateluzod.github.io/nate-is/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Trying Rust</title>
+      <link>https://nateluzod.github.io/nate-is/post/trying-rust/</link>
+      <pubDate>Mon, 28 Aug 2017 19:35:45 -1000</pubDate>
+      
+      <guid>https://nateluzod.github.io/nate-is/post/trying-rust/</guid>
+      <description>I hit a wall working on CMS / WordPress this afternoon so decided to take a few minutes to check out a &amp;lsquo;new&amp;rsquo; language. Never mind that I&amp;rsquo;m months behind on learning Elixir, Phoenix and Elm, as was my plan for earlier this year - today I wanted to check out Rust.
+Why? I&amp;rsquo;m not terribly interested in building anything non-web, so Rust falls decidedly out of my sweet spot in terms of practicality.</description>
+    </item>
+    
+    <item>
+      <title>Behat Tests Silently Failing</title>
+      <link>https://nateluzod.github.io/nate-is/post/behat-tests-silent-failure/</link>
+      <pubDate>Thu, 25 May 2017 19:59:40 -1000</pubDate>
+      
+      <guid>https://nateluzod.github.io/nate-is/post/behat-tests-silent-failure/</guid>
+      <description>This week I ran into an issue where our Behat test suite would run and exit without completing, no error messages or meaningful warnings. Best of all was that this happened locally but not on Travis CI.
+After sifting through some ancient SO threads and upgrading to PHP 7.2, the issue seemed to be local memory limit. The quick fix was just updating php.ini:
+memory_limit = 512M;  Our suite only has 100 or so scenarios, only seeds once and runs quickly: 30 seconds locally and 3 minutes on Travis CI.</description>
+    </item>
+    
+    <item>
+      <title>HTTPS Redirect for Laravel on Heroku</title>
+      <link>https://nateluzod.github.io/nate-is/post/laravel-https-heroku/</link>
+      <pubDate>Thu, 27 Apr 2017 19:55:13 -1000</pubDate>
+      
+      <guid>https://nateluzod.github.io/nate-is/post/laravel-https-heroku/</guid>
+      <description>Earlier this week I had a series of &amp;lsquo;black-hole&amp;rsquo; days; the kind where you spend way too long on one problem, only to end the day with embarrassingly little to show for it.
+One of the reasons I started writing is to document fixes for those odd issues and hopefully prevent others from having to deal with the same things. Tuesday&amp;rsquo;s issue was forwarding all non http requests to https on a Laravel app.</description>
+    </item>
     
   </channel>
 </rss>

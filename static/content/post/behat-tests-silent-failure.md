@@ -1,7 +1,7 @@
 ---
 title: "Behat Tests Silently Failing"
 date: 2017-05-25T19:59:40-10:00
-draft: true
+draft: false
 ---
 
 This week I ran into an issue where our Behat test suite would run and exit without completing, no error messages or meaningful warnings. Best of all was that this happened locally but not on Travis CI.
