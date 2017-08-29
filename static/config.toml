@@ -2,7 +2,7 @@ baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Nate Luzod"
 theme = "hyde"
-publishDir = "docs"
+publishDir = "../docs"
 
 [params]
   description = "Developer/Designer hybrid in Honolulu, Hawaii"
