@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.26" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>HTTPS Redirect for Laravel on Heroku &middot; Nate Luzod</title>
+  
+
+  
+  <link rel="stylesheet" href="https://nateluzod.github.io/nate-is/css/print.css" media="print">
+  <link rel="stylesheet" href="https://nateluzod.github.io/nate-is/css/poole.css">
+  <link rel="stylesheet" href="https://nateluzod.github.io/nate-is/css/syntax.css">
+  <link rel="stylesheet" href="https://nateluzod.github.io/nate-is/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Nate Luzod" />
+</head>
+
+<body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://nateluzod.github.io/nate-is/"><h1>Nate Luzod</h1></a>
+      <p class="lead">
+       Developer/Designer hybrid in Honolulu, Hawaii 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://nateluzod.github.io/nate-is/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2017. All rights reserved. </p>
+  </div>
+</div>
+
+
+  <div class="content container">
+    <div class="post">
+      <h1>HTTPS Redirect for Laravel on Heroku</h1>
+      <span class="post-date">Thu, Apr 27, 2017</span>
+      <p>Earlier this week I had a series of &lsquo;black-hole&rsquo; days; the kind where you spend way too long on one problem, only to end the day with embarrassingly little to show for it.</p>
+
+<p>One of the reasons I started writing is to document fixes for those odd issues and hopefully prevent others from having to deal with the same things. Tuesday&rsquo;s issue was forwarding all non http requests to https on a Laravel app.</p>
+
+<p>Seems simple enough, right? Sadly, no.</p>
+
+<p>First off, I tried a few simple .htaccess variations, all of which returned &lsquo;Too many redirects&rsquo;. No problem, there were other options. Next, I tried a few different middleware approaches. Worked fine locally, virtually ineffective on the server. After that, I tried using \URL::forceSchema(&lsquo;https&rsquo;); in AppServiceProvider.php - also totally ineffective. By this point I had burned a couple hours. Submitted a ticket to Heroku support and kept looking. I can&rsquo;t remember how or which SO thread(s) this was pieced together from, but this did the trick:</p>
+
+<pre><code>&lt;IfModule mod_negotiation.c&gt;
+    Options -MultiViews
+&lt;/IfModule&gt;
+
+    DirectoryIndex index.php index.html index.htm
+
+    RewriteEngine On
+
+    #Normal way (in case you need to deploy to NON-heroku)
+    RewriteCond %{HTTPS} !=on
+
+    #Heroku way
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+
+    #If neither above conditions are met, redirect to https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+&lt;/IfModule&gt;
+</code></pre>
+
+<p>The response I got from Heroku the next day more or less explains why middleware didn&rsquo;t do anything:</p>
+
+<p>&ldquo;Heroku dynos run behind a routing layer that handles load balancing and HTTPS termination (<a href="https://devcenter.heroku.com/articles/http-routing#routing">https://devcenter.heroku.com/articles/http-routing#routing</a>), so the request to the backend is plain HTTP, and the original protocol of the request is in the X-Forwarded-Proto header, as documented here: <a href="https://devcenter.heroku.com/articles/http-routing#heroku-headers">https://devcenter.heroku.com/articles/http-routing#heroku-headers</a></p>
+
+<p>You need to rewrite based on that header, or, if you want to handle things purely in Laravel, instruct the framework to trust the right headers, as documented here: <a href="https://devcenter.heroku.com/articles/getting-started-with-laravel#trusting-the-load-balancer&quot;">https://devcenter.heroku.com/articles/getting-started-with-laravel#trusting-the-load-balancer&quot;</a></p>
+
+<p>So that&rsquo;s that. Hopefully, if you&rsquo;re suffering the same issue, Google will be kind and lead you here.</p>
+
+    </div>
+
+			
+		</div>
+
+</body>
+</html>

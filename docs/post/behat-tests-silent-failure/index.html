@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.26" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Behat Tests Silently Failing &middot; Nate Luzod</title>
+  
+
+  
+  <link rel="stylesheet" href="https://nateluzod.github.io/nate-is/css/print.css" media="print">
+  <link rel="stylesheet" href="https://nateluzod.github.io/nate-is/css/poole.css">
+  <link rel="stylesheet" href="https://nateluzod.github.io/nate-is/css/syntax.css">
+  <link rel="stylesheet" href="https://nateluzod.github.io/nate-is/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Nate Luzod" />
+</head>
+
+<body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://nateluzod.github.io/nate-is/"><h1>Nate Luzod</h1></a>
+      <p class="lead">
+       Developer/Designer hybrid in Honolulu, Hawaii 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://nateluzod.github.io/nate-is/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2017. All rights reserved. </p>
+  </div>
+</div>
+
+
+  <div class="content container">
+    <div class="post">
+      <h1>Behat Tests Silently Failing</h1>
+      <span class="post-date">Thu, May 25, 2017</span>
+      <p>This week I ran into an issue where our Behat test suite would run and exit without completing, no error messages or meaningful warnings. Best of all was that this happened locally but not on Travis CI.</p>
+
+<p>After sifting through some ancient SO threads and upgrading to PHP 7.2, the issue seemed to be local memory limit. The quick fix was just updating php.ini:</p>
+
+<pre><code>memory_limit = 512M;
+</code></pre>
+
+<p>Our suite only has 100 or so scenarios, only seeds once and runs quickly: 30 seconds locally and 3 minutes on Travis CI. That doesn&rsquo;t seem outlandish for an app, so I would think this is a more common problem as I have read about other suites taking 10-20 minutes to complete.</p>
+
+    </div>
+
+			
+		</div>
+
+</body>
+</html>
